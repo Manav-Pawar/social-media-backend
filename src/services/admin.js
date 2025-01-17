@@ -8,9 +8,13 @@ const createInitialAdmin = async () => {
             const hashedPassword = await bcrypt.hash('admin123', 10);
             await Admin.create({
                 username: 'admin',
-                password: hashedPassword
+                email: 'admin@example.com', // Provide a valid email
+                password: hashedPassword,
+                role: 'super_admin' // Optional, based on your requirements
             });
             console.log('Initial admin account created');
+        } else {
+            console.log('Admin account already exists');
         }
     } catch (error) {
         console.error('Error creating initial admin:', error);
